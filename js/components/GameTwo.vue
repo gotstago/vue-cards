@@ -6,7 +6,7 @@
   </header>
   <main class="grail-main">
     <!-- <North></North> -->
-    <Position></Position>
+    <Table></Table>
     <!-- <span>Main</span>
     <h1>Holy Grail !</h1>
     <p class="caption">This demo is also available for tweaking wih the Visual Grid Editor included in the <a href="https://cssgrid.cc/#get-grid-builder"> CSS Grid Builder app</a>.</p> -->
@@ -26,7 +26,7 @@
 <script>
 import Dashboard from "./dashboard/Dashboard";
 import North from "./card/North";
-import Position from "./card/Position";
+import Table from "./card/Table";
 import Status from "./footer/PlayStatus";
 import { mapActions } from "vuex";
 import { STATUS } from "../vuex/store/statusEnum";
@@ -41,7 +41,7 @@ export default {
     this.reset();
   },
 
-  components: { Dashboard, North, Position, Status }
+  components: { Dashboard, North, Table, Status }
 };
 </script>
 

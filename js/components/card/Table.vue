@@ -2,6 +2,8 @@
     <div class="container">
         <div class="avatar north">
             <img class="front" :src="getSrc('avatar')"/>
+            <img class="front" :src="getSrc('namePlate')"/>
+            
             <!-- <img class="back" :src="getSrc('avatar')"/> -->
         </div>
         <div class="avatar south">
@@ -82,6 +84,7 @@ export default {
   /* height: 121px; */
   /* position: relative; */
   /* perspective: 800px; */
+  
 }
 .avatar {
   background-color: rgba(255, 255, 255, 0.8);
