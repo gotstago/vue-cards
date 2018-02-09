@@ -29,7 +29,7 @@
 
 <script>
 import Card from "./Card";
-import Avatar from "./Avatar";
+import Position from "./Position";
 import Table from "./Table";
 
 import { mapActions, mapGetters } from "vuex";
@@ -78,7 +78,7 @@ export default {
     }
   },
 
-  components: { Card, Avatar, Table }
+  components: { Card, Position, Table }
 };
 </script>
 

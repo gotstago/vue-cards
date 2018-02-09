@@ -49,7 +49,7 @@ export default {
 .grail-header {
   grid-area: header;
   /* background-color: #dcd6fe; */
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .grail-nav {
