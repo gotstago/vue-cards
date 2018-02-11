@@ -17,7 +17,7 @@ export default {
       type: Object,
       default() {
         return {
-          flipped: true,
+          flipped: false,
           cardName: "",
           src: "../../../img/8C.png"
         };
@@ -43,6 +43,9 @@ export default {
     },
     getSrc(name) {
       var images = require.context("../../../img/", false, /\.png$/);
+      if (this.option.position !== "south") {
+        return images("./" + "back" + ".png");
+      }
       return images("./" + name + ".png");
     }
   },
@@ -56,7 +59,27 @@ export default {
   display: block;/* if we do not do this, will inherit grid from parent */
   /* width: 75px; */
 }
-.front {
+/* .card.flipped {
+  transform: rotateY(180deg);
+} */
+
+/* .card .back {
+  background: blue;
+  transform: rotateY(0deg);
+}
+
+.card .front {
+  background: blue;
+  transform: rotateY(180deg);
+} */
+.card img {
+  /* display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute; */
+  backface-visibility: hidden;
+}
+.card .front {
   width: 100%
   /* width: 500px; */
   /* height: 100%;

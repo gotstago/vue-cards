@@ -1,6 +1,6 @@
 <template>
     <div class="cards" >
-        <Card class="playingcard" v-for="(card, index) of southCards" :key="index" :option="card" v-on:flipped="onFlipped"></Card>
+        <Card class="playingcard" v-for="(card, index) of cards" :key="index" :option="card" v-on:flipped="onFlipped"></Card>
     </div>
 </template>
 
@@ -19,12 +19,12 @@ export default {
           src: "../../../img/8C.png"
         };
       }
-    }
+    },
+    cards: []
   },
 
   computed: {
     ...mapGetters([
-      "cards",
       "status",
       "northCards",
       "southCards",
@@ -60,7 +60,7 @@ export default {
   /* margin-top: 10px; */
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   /* width: 100%; */
 
   /* background-color: #fff; */

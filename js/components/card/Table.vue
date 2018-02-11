@@ -1,6 +1,11 @@
 <template>
     <div class="table">
-      <Deck class="deck"></Deck>
+      <Deck class="deck south" :cards="southCards"></Deck>
+      <Deck class="deck west" :cards="westCards"></Deck>
+      <Deck class="deck north" :cards="northCards"></Deck>
+      <Deck class="deck east" :cards="eastCards"></Deck>
+      <!-- <Position class="avatar south">South</Position>
+      <Position class="avatar west">West</Position> -->
       <!-- <Position class="avatar north">North</Position>
       <Position class="avatar south">South</Position>
       <Position class="avatar west">West</Position>
@@ -27,7 +32,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import Position from "./Position";
 import Deck from "./Deck";
 
@@ -43,6 +48,17 @@ export default {
         };
       }
     }
+  },
+
+  computed: {
+    ...mapGetters([
+      "status",
+      "northCards",
+      "southCards",
+      "eastCards",
+      "westCards",
+      "trickCards"
+    ])
   },
 
   methods: {
@@ -85,28 +101,74 @@ export default {
   /* width: 360px; */
   width:100%;
   display: grid;
-  grid-template-columns: 5px 10fr 5px;
-  grid-template-rows: 200px 1fr 1fr;
+  grid-template-columns: 1fr minmax(40px, 60px) minmax(130px, 190px) minmax(40px, 60px) minmax(130px, 190px) 1fr;
+  grid-template-rows: 50px 3fr 50px 140px 60px;
   /* grid-template-columns: repeat(18, 1fr);
   grid-template-rows: repeat(23, 1fr); */
   /* background-color: #2196f3; */
   /* padding: 10px 10px; */
-  height: 680px;
+  /* height: 600px; */
   /* position: relative; */
   /* perspective: 800px; */
   
 }
 
-.table .deck {
+.table .deck.south {
   grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  grid-column-end: 6;
+  grid-row-start: 4;
+  grid-row-end: 5;
   z-index: 1;
-  padding: 10px 10px;
+  /* padding: 10px 10px; */
   /* transform: scale(0.5); */
   width: 100%;
+  /* height: 200px; */
   /* transform: rotate(270deg); */
+}
+
+.table .deck.west {
+  grid-column-start: 2;
+  grid-column-end: 6;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  z-index: 1;
+  /* padding: 10px 10px; */
+  /* transform: scale(0.5); */
+  width: 100%;
+  /* height: 200px; */
+  transform-origin: top right;
+  transform: translate(-85%, -25px) rotate(90deg) scale(.5);
+  /* translate(40%, 30%) */
+}
+
+.table .deck.east {
+  grid-column-start: 2;
+  grid-column-end: 6;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  z-index: 1;
+  /* padding: 10px 10px; */
+  /* transform: scale(0.5); */
+  width: 100%;
+  /* height: 200px; */
+  transform-origin: top left;
+  transform: translate(85%, -25px) rotate(-90deg) scale(.5);
+  /* translate(40%, 30%) */
+}
+
+.table .deck.north {
+  grid-column-start: 2;
+  grid-column-end: 6;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  z-index: 1;
+  /* padding: 10px 10px; */
+  /* transform: scale(0.5); */
+  width: 100%;
+  /* height: 200px; */
+  transform-origin: top ;
+  transform: translateY(-300px) rotate(180deg) scale(.5);
+  /* translate(40%, 30%) */
 }
 
 .avatar {
@@ -117,26 +179,28 @@ export default {
   text-align: center; */
 }
 
-/* .avatar.south {
-  grid-column-start: 9;
-  grid-column-end: 12;
-  grid-row-start: 22;
-  grid-row-end: 23;
+.table .avatar.south {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 5;
+  grid-row-end: 6;
   z-index: 2;
 }
-.avatar.north {
+
+.table .avatar.west {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  /* transform: rotate(90deg); */
+}
+
+/* .avatar.north {
   grid-column-start: 9;
   grid-column-end: 12;
   grid-row-start: 8;
   grid-row-end: 13;
   transform: rotate(180deg);
-}
-.avatar.west {
-  grid-column-start: 2;
-  grid-column-end: 5;
-  grid-row-start: 13;
-  grid-row-end: 18;
-  transform: rotate(90deg);
 }
 .avatar.east {
   grid-column-start: 16;

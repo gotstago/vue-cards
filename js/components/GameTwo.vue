@@ -80,11 +80,12 @@ export default {
 
 .holy-grail {
   width: 100%;
-  height: 680px;
+  height: 640px;
   border: 4px solid #bdbdbd;
   border-radius: 2px;
   background-color: #faf8ef;
   display: grid;
+  /* grid-template-rows: minmax(640px, 700px); */
   grid-template-areas:
       "main";
 }
