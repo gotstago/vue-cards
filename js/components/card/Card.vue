@@ -1,9 +1,9 @@
 <template>
     <div class="container" v-on:click="play">
-        <div class="card" v-bind:class="{ flipped: option.flipped }">
+        <div class="card" v-bind:class="{ flipped: option.flipped }" >
             <img class="front" :src="getSrc(option.src)"/>
 
-            <img class="back" src="../../../img/back.png"/>
+            <!-- <img class="back" src="../../../img/back.png"/> -->
         </div>
     </div>
 </template>
@@ -53,6 +53,17 @@ export default {
 
 <style scoped>
 .container {
+  display: block;/* if we do not do this, will inherit grid from parent */
+  /* width: 75px; */
+}
+.front {
+  width: 100%
+  /* width: 500px; */
+  /* height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d; */
+}
+/* .container {
   margin-left: -70px;
   cursor: pointer;
   position: relative;
@@ -118,5 +129,5 @@ export default {
     height: 84px;
     margin-right: 1px;
   }
-}
+} */
 </style>

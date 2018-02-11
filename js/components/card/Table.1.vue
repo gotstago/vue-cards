@@ -1,10 +1,10 @@
 <template>
     <div class="container">
       <Deck class="deck"></Deck>
-      <!-- <Position class="avatar north">North</Position>
+      <Position class="avatar north">North</Position>
       <Position class="avatar south">South</Position>
       <Position class="avatar west">West</Position>
-      <Position class="avatar east">East</Position> -->
+      <Position class="avatar east">East</Position>
         <!-- <div class="avatar north">
             <img class="front" :src="getSrc('avatar')"/>
             <img class="front" :src="getSrc('namePlate')"/> -->
@@ -82,33 +82,17 @@ export default {
 .container {
   /* margin-left: -70px; */
   cursor: pointer;
-  /* width: 360px; */
-  width:100%;
+  width: 360px;
   display: grid;
-  grid-template-columns: 5px 10fr 5px;
-  grid-template-rows: 100px 1fr 1fr;
-  /* grid-template-columns: repeat(18, 1fr);
-  grid-template-rows: repeat(23, 1fr); */
+  grid-template-columns: repeat(18, 1fr);
+  grid-template-rows: repeat(23, 1fr);
   /* background-color: #2196f3; */
-  /* padding: 10px 10px; */
-  height: 680px;
+  padding: 10px 10px;
+  height: 600px;
   /* position: relative; */
   /* perspective: 800px; */
   
 }
-
-.deck {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  z-index: 1;
-  padding: 10px 10px;
-  /* transform: scale(0.5); */
-  width: 100%;
-  /* transform: rotate(270deg); */
-}
-
 .avatar {
   /* background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
@@ -117,11 +101,11 @@ export default {
   text-align: center; */
 }
 
-/* .avatar.south {
+.avatar.south {
   grid-column-start: 9;
   grid-column-end: 12;
   grid-row-start: 22;
-  grid-row-end: 23;
+  /* grid-row-end: 23; */
   z-index: 2;
 }
 .avatar.north {
@@ -144,8 +128,16 @@ export default {
   grid-row-start: 13;
   grid-row-end: 18;
   transform: rotate(270deg);
-} */
-
+}
+.deck {
+  grid-column-start: 1;
+  grid-column-end: 15;
+  grid-row-start: 16;
+  grid-row-end: 18;
+  z-index: 1;
+  transform: scale(0.8);
+  /* transform: rotate(270deg); */
+}
 
 /* .card {
   width: 100%;

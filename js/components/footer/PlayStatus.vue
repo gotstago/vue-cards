@@ -6,8 +6,8 @@
         <a v-if="status === PASS" v-on:click.prevent.stop="reset" href>Play again</a>
         <a v-if="status === READY" v-on:click.prevent.stop="deal" href>Deal</a>
         <a v-if="status === BIDDING" v-on:click.prevent.stop="dealKitty" href>Deal Kitty</a>
-        <span class="elapsed">{{ elapsedMs }} s</span>
-        <span>{{ players }}</span>
+        <!-- <span class="elapsed">{{ elapsedMs }} s</span>
+        <span>{{ players }}</span> -->
     </div>
 </template>
 

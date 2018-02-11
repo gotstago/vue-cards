@@ -1,183 +1,133 @@
 <template>
-    <div class="container" v-on:click="play">
-        <ul class="cards">
-  <li class="card card--aod" onclick=""></li>
-  <li class="card card--2oc" onclick=""></li>
-  <li class="card card--aoh" onclick=""></li>
-  <li class="card card--aos" onclick=""></li>
-  <li class="card card--koh" onclick=""></li>
-  <li class="card card--aoc" onclick=""></li>
-  <li class="card card--aoh" onclick=""></li>
-  <li class="card card--aos" onclick=""></li>
-  <li class="card card--koh" onclick="">
-      <img class="back" src="../../../img/back.png"/>
-  </li>
-</ul>
-        <!-- <div class="card" v-bind:class="{ flipped: option.flipped }">
-            <img class="front" :src="getSrc(option.src)"/>
-
-            <img class="back" src="../../../img/back.png"/>
-        </div> -->
+    <div class="container" >
+        <Card class="playingcard" v-for="(card, index) of southCards" :key="index" :option="card" v-on:flipped="onFlipped"></Card>
     </div>
 </template>
 
 <script>
-// import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
+import Card from "./Card";
 
-// export default {
-//   props: {
-//     option: {
-//       type: Object,
-//       default() {
-//         return {
-//           flipped: true,
-//           cardName: "",
-//           src: "../../../img/8C.png"
-//         };
-//       }
-//     }
-//   },
+export default {
+  props: {
+    option: {
+      type: Object,
+      default() {
+        return {
+          flipped: true,
+          cardName: "",
+          src: "../../../img/8C.png"
+        };
+      }
+    }
+  },
 
-//   methods: {
-//     ...mapActions(["flipCard", "playCard"]),
-//     flip() {
-//       return;
-//       // if (this.option.flipped) {
-//       //   return;
-//       // }
-//       // this.flipCard(this.option);
-//       // this.$emit("flipped", this.option);
-//     },
-//     play() {
-//       if (this.option.position !== "south") {
-//         return;
-//       }
-//       this.playCard(this.option);
-//     },
-//     getSrc(name) {
-//       var images = require.context("../../../img/", false, /\.png$/);
-//       return images("./" + name + ".png");
-//     }
-//   },
+  computed: {
+    ...mapGetters([
+      "cards",
+      "status",
+      "northCards",
+      "southCards",
+      "eastCards",
+      "westCards",
+      "trickCards"
+    ])
+  },
 
-//   components: {}
-// };
+  methods: {
+    ...mapActions(["flipCard", "playCard"]),
+    flip() {
+      return;
+    },
+    // play() {
+    //   if (this.option.position !== "south") {
+    //     return;
+    //   }
+    //   this.playCard(this.option);
+    // },
+    // getSrc(name) {
+    //   var images = require.context("../../../img/", false, /\.png$/);
+    //   return images("./" + name + ".png");
+    // }
+  },
+
+  components: {Card}
+};
 </script>
 
 <style scoped>
-.cards {
-  display: flex;
+.container {
+  /* margin-top: 10px; */
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
+  /* width: 100%; */
+
+  /* background-color: #fff; */
+  /* height: 100px;
+  border-radius: 4px;
+  padding: 10px 5px;
+  display: inline-flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-end;
-}
-.cards,
-.card {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-.card img {
-  display: block;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  backface-visibility: hidden;
+  align-items: center;
+  align-content: space-around; */
+  /* transform: translateY(-10%) rotateZ(180deg) scale(0.8); */
 }
 
-.card .back {
-  background: blue;
-  /* transform: rotateY(0deg); */
+:nth-child(1) {
+  width:100%;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
-.card {
-  font-size: 20vw;
-  margin: 0 -0.26em;
-  position: relative;
-  cursor: pointer;
-  color: #292a18;
-
-  /* Uncomment these lines to see the target areas for the hovering */
-  /*
-  background: rgba(255,255,255,0.5);
-  outline: solid 5px red;
-  */
+:nth-child(2) {
+    grid-column-start: 2;
+    grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
-
-/* :before,
-:after {
-  content: "";
-  display: block;
-  pointer-events: none;
-} */
-
-:before {
-  position: absolute;
-  top: 5%;
-  right: 0;
-  bottom: -5%;
-  left: 0;
-  margin: auto;
-  background: #000;
-  filter: blur(10px);
-  opacity: 0;
-  transition: opacity 0.35s linear;
+:nth-child(3) {
+    grid-column-start: 3;
+    grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
-
-:after {
-  position: relative;
-  width: 1em;
-  height: 1.1em;
-  border-radius: 0.1em;
-
-  background: #eee;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-
-  text-align: center;
-  padding: 0.1em 0;
-  line-height: 1;
-
-  transform-origin: center bottom;
-  transition: transform 0.4s cubic-bezier(0.46, 0.01, 0.3, 0.98);
-  transition-timing-function: cubic-bezier(0.1, 0.98, 0.47, 0.99);
+:nth-child(4) {
+    grid-column-start: 4;
+    grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
-.card--2oc:after {
-  content: "\1F0D2";
+:nth-child(5) {
+    grid-column-start: 5;
+    grid-column-end: 7;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
-.card--aoc:after {
-  content: "\1F0D1";
+:nth-child(6) {
+    grid-column-start: 6;
+    grid-column-end: 8;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
-.card--aoh:after {
-  content: "\1F0B1";
+:nth-child(7) {
+    grid-column-start: 7;
+    grid-column-end: 9;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
-.card--koh:after {
-  content: "\1F0BE";
+:nth-child(8) {
+    grid-column-start: 8;
+    grid-column-end: 10;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
-.card--aod:after {
-  content: "\1F0C1";
-}
-.card--aos:after {
-  content: "\1F0A1";
-}
-.card--kos:after {
-  content: "\1F0AE";
-}
-
-.card--aod,
-.card--aoh,
-.card--koh {
-  color: #cc5840;
-}
-
-html {
-  height: 100%;
-  display: flex;
-  background: hsla(74, 20%, 39%, 1);
-  overflow: hidden;
-}
-body {
-  margin: auto;
-  width: 100%;
-}
-* {
-  box-sizing: border-box;
+:nth-child(9) {
+    grid-column-start: 9;
+    grid-column-end: 11;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 </style>
