@@ -1,5 +1,5 @@
 <template>
-    <div class="container" >
+    <div class="cards" >
         <Card class="playingcard" v-for="(card, index) of southCards" :key="index" :option="card" v-on:flipped="onFlipped"></Card>
     </div>
 </template>
@@ -56,7 +56,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.cards {
   /* margin-top: 10px; */
   display: grid;
   grid-template-columns: repeat(10, 1fr);

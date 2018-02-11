@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="table">
       <Deck class="deck"></Deck>
       <!-- <Position class="avatar north">North</Position>
       <Position class="avatar south">South</Position>
@@ -79,14 +79,14 @@ export default {
   /* position: absolute; */
   /* backface-visibility: hidden; */
 /* } */
-.container {
+.table {
   /* margin-left: -70px; */
   cursor: pointer;
   /* width: 360px; */
   width:100%;
   display: grid;
   grid-template-columns: 5px 10fr 5px;
-  grid-template-rows: 100px 1fr 1fr;
+  grid-template-rows: 200px 1fr 1fr;
   /* grid-template-columns: repeat(18, 1fr);
   grid-template-rows: repeat(23, 1fr); */
   /* background-color: #2196f3; */
@@ -97,7 +97,7 @@ export default {
   
 }
 
-.deck {
+.table .deck {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 2;
